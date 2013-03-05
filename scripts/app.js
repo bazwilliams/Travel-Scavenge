@@ -1,10 +1,11 @@
 /*global define*/
 define([
 	'jquery',
-	'backbone'
-], function ($, Backbone) {
+	'backbone',
+	'data'
+], function ($, Backbone, data) {
 	var initialize = function () {
-
+		data.getTiles();
 	};
 
 	return {

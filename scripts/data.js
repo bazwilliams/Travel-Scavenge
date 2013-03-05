@@ -1,11 +1,13 @@
 /*global define*/
 define([
 	'jquery',
-	'text!../data/dictionary2.json'
+	'text!../data/tiles.json'
 ], function($, data){
 	var dict = $.parseJSON(data);
 	var getTiles = function () {
 		return dict['tiles'];
 	};
-	return getWord;
+	return {
+		getTiles: getTiles
+	};
 });
