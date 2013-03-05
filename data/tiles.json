@@ -1,0 +1,31 @@
+{
+	"tiles" : [ 
+		{
+			"description" : "lorry"
+		},
+		{
+			"description" : "car"
+		},
+		{
+			"description" : "motorbike"
+		},
+		{
+			"description" : "campervan"
+		},
+		{
+			"description" : "train"
+		},
+		{
+			"description" : "bus"
+		},
+		{
+			"description" : "wind turbine"
+		},
+		{
+			"description" : "petrol station"
+		},
+		{
+			"description" : "boat"
+		}
+	]
+}
