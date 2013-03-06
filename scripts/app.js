@@ -2,10 +2,13 @@
 define([
 	'jquery',
 	'backbone',
-	'data'
-], function ($, Backbone, data) {
+	'data',
+	'collections/tiles'
+], function ($, Backbone, data, Tiles) {
 	var initialize = function () {
-		data.getTiles();
+		var tiles = new Tiles(
+			data.getTiles()
+		);
 	};
 
 	return {
