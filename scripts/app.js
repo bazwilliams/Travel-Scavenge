@@ -3,12 +3,15 @@ define([
 	'jquery',
 	'backbone',
 	'data',
+	'views/tilesview',
 	'collections/tiles'
-], function ($, Backbone, data, Tiles) {
+], function ($, Backbone, data, TilesView, Tiles) {
 	var initialize = function () {
-		var tiles = new Tiles(
-			data.getTiles()
-		);
+		var tilesView = new TilesView({
+			collection : new Tiles(data.getTiles())
+		});
+		tilesView.render();
+		$(document).find('section').append(tilesView.el);
 	};
 
 	return {
