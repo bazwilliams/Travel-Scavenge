@@ -4,7 +4,9 @@ define([
 	'backbone'
 ],function ($, Backbone) {
 	var Tile = Backbone.Model.extend({
-
+		defaults : {
+			selected : false
+		}
 	});
 	return Tile;
 });

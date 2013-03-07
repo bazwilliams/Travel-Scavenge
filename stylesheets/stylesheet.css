@@ -1,0 +1,8 @@
+.tile {
+	width: 100px;
+	height: 100px;
+}
+
+.selected {
+	background-color: #e5e5e5;
+}

@@ -4,7 +4,8 @@ define([
 	'backbone',
 	'data',
 	'views/tilesview',
-	'collections/tiles'
+	'collections/tiles',
+	'extensions'
 ], function ($, Backbone, data, TilesView, Tiles) {
 	var initialize = function () {
 		var tilesView = new TilesView({
