@@ -4,7 +4,8 @@ require.config({
         jquery: '../libs/jquery-1.9.1.min',
         underscore: '../libs/underscore-min',
         handlebars: '../libs/handlebars',
-        backbone: '../libs/backbone-min'
+        backbone: '../libs/backbone-min',
+        bootstrap: '../libs/bootstrap.min'
     },
     shim: {
         underscore: {
@@ -16,6 +17,9 @@ require.config({
         },
         handlebars: {
             exports: 'Handlebars'
+        },
+        bootstrap: {
+            exports: 'bootstrap'
         }
     }
 });

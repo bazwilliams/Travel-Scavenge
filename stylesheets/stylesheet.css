@@ -1,8 +1,16 @@
-.tile {
-	width: 100px;
-	height: 100px;
+.tile .thumbnail {
+	width: 150px;
+	height: 150px;
+	margin-bottom: 20px;
+	box-shadow: 5px 5px 35px rgba(0.5,0.5,0.5,0.5);
+
 }
 
 .selected {
 	background-color: #e5e5e5;
+}
+
+.playarea {
+	width: 570px;
+	padding: 20px;
 }
