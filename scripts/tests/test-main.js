@@ -1,10 +1,15 @@
-require.config({
-    baseUrl: 'scripts/src',
+var tests = Object.keys(window.__testacular__.files).filter(function (file) {
+    return /Specs\.js$/.test(file);
+});
+
+require({
+    baseUrl: '/base/src',  
     paths: {
         jquery: '../libs/jquery-1.9.1.min',
         underscore: '../libs/underscore-min',
         handlebars: '../libs/handlebars',
-        backbone: '../libs/backbone-min'
+        backbone: '../libs/backbone-min',
+        require: '../libs/require'
     },
     shim: {
         underscore: {
@@ -17,9 +22,7 @@ require.config({
         handlebars: {
             exports: 'Handlebars'
         }
-    }
-});
-
-require(['app'], function(app) {
-	app.initialize();
+    },
+    deps: tests,
+    callback: window.__testacular__.start
 });
