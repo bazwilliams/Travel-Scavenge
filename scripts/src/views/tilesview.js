@@ -10,7 +10,21 @@ define([
 	var TilesView = Backbone.View.extend({
 		initialize : function () {
 			this.template = Handlebars.compile(Template);
+            this.collection.on('change', this.checkForWin, this);
 		},
+
+        onClose: function () {
+            this.collection.off('change', this.checkForWin);
+        },
+
+        checkForWin: function () {
+            if (this.collection.size() === this.collection.getScore()) {
+                this.$el.find('.playarea').addClass('game-complete');
+            }
+            else {
+                this.$el.find('.playarea').removeClass('game-complete');
+            }
+        },
 
 		render : function () {
 			var self = this;

@@ -5,7 +5,14 @@ define([
 	'models/tile'
 ], function ($, Backbone, Tile) {
 	var Tiles = Backbone.Collection.extend({
-		model : Tile
+		model : Tile,
+        getScore: function () {
+            var score = 0;
+            this.each(function (model) {
+                score += (model.get('selected')) ? 1 : 0;
+            });
+            return score;
+        }
 	})
 	return Tiles;
 });
