@@ -13,13 +13,23 @@
 .tile .thumbnail {
 	box-shadow: 3px 3px 15px rgba(92,92,92,0.1);
 	line-height: 140px;
+    background: white;
 }
 
 .playarea {
 	width: 490px;
 	padding: 20px;
+
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 }
 
+.playarea.game-complete {
+    background: #d0e9c6;
+}
 		/* -- make sure to declare a default for every property that you want animated -- */
 		/* -- general styles, including Y axis rotation -- */
 		.tile .front {
