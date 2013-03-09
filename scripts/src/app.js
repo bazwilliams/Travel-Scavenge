@@ -3,8 +3,8 @@ define([
 	'jquery',
 	'backbone',
 	'data',
-	'views/tilesview',
-	'collections/tiles',
+	'views/TilesView',
+	'collections/Tiles',
 	'extensions',
 	'bootstrap'
 ], function ($, Backbone, data, TilesView, Tiles) {

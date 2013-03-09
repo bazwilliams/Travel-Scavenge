@@ -1,5 +1,5 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['collections/tiles'
+define(['collections/Tiles'
 ], function (Tiles) {
     describe('Tiles', function () {
         var collection;

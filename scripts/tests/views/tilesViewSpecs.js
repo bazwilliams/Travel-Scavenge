@@ -1,6 +1,6 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['collections/tiles',
-        'views/tilesview'
+define(['collections/Tiles',
+        'views/TilesView'
 ], function (Tiles, TilesView) {
     describe('TilesView', function () {
         var el, collection, view;

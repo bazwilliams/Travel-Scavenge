@@ -3,7 +3,7 @@ define([
 	'jquery',
 	'backbone',
 	'handlebars',
-	'models/tile',
+	'models/Tile',
 	'text!templates/tile.html'
 ], function ($, Backbone, Handlebars, Tile, Template) {
 	var TileView = Backbone.View.extend({

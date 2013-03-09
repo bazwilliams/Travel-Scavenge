@@ -2,7 +2,7 @@
 define([
 	'jquery',
 	'backbone',
-	'models/tile'
+	'models/Tile'
 ], function ($, Backbone, Tile) {
 	var Tiles = Backbone.Collection.extend({
 		model : Tile,

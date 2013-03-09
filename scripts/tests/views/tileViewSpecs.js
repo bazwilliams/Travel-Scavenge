@@ -1,6 +1,6 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['models/tile',
-		'views/tileview'
+define(['models/Tile',
+		'views/TileView'
 ], function (Tile, TileView) {
     describe('TileView', function () {
         var el, model, view;
