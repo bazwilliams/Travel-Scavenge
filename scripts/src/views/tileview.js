@@ -9,7 +9,6 @@ define([
 	var TileView = Backbone.View.extend({
 		initialize : function () {
 			this.template = Handlebars.compile(Template);
-			this.model.on('change', this.render, this);
 		},
 
 		events : {
@@ -17,12 +16,18 @@ define([
 		},
 
 		onClose : function () {
-			this.model.off('change', this.render);
 		},
 
 		toggle : function () {
-			var state = this.model.get('selected');
-			this.model.set('selected', !state);
+			var wasSelected = this.model.get('selected');
+			if (wasSelected) {
+				this.$el.find('.tile').removeClass('selected');
+				this.model.set('selected', false);
+			} 
+			else {
+				this.$el.find('.tile').addClass('selected');
+				this.model.set('selected', true);
+			}
 		},
 
 		render : function () {

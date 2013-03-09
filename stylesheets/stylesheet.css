@@ -1,16 +1,95 @@
-.tile .thumbnail {
-	width: 150px;
-	height: 150px;
-	margin-bottom: 20px;
-	box-shadow: 3px 3px 15px rgba(92,92,92,0.1);
-
+.tile {
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	text-align: center;
 }
 
-.selected {
-	background-color: #e5e5e5;
+.tile.span2 {
+	height: 140px;
+	margin-bottom: 20px;
+}
+
+.tile .thumbnail {
+	box-shadow: 3px 3px 15px rgba(92,92,92,0.1);
+	line-height: 140px;
 }
 
 .playarea {
-	width: 570px;
+	width: 490px;
 	padding: 20px;
 }
+
+		/* -- make sure to declare a default for every property that you want animated -- */
+		/* -- general styles, including Y axis rotation -- */
+		.tile .front {
+			z-index: 900;
+			width: inherit;
+			height: inherit;
+			-webkit-transform: rotateX(0deg) rotateY(0deg);
+			-webkit-transform-style: preserve-3d;
+			-webkit-backface-visibility: hidden;
+
+			-moz-transform: rotateX(0deg) rotateY(0deg);
+			-moz-transform-style: preserve-3d;
+			-moz-backface-visibility: hidden;
+
+			/* -- transition is the magic sauce for animation -- */
+			-o-transition: all .4s ease-in-out;
+			-ms-transition: all .4s ease-in-out;
+			-moz-transition: all .4s ease-in-out;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}
+		.tile.selected .front {
+			z-index: 900;
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+		}
+		
+		.tile .back {
+			position: absolute;
+			top: 0;
+			z-index: 800;
+			width: inherit;
+			height: inherit;
+
+			-webkit-transform: rotateY(-180deg);
+			-webkit-transform-style: preserve-3d;
+			-webkit-backface-visibility: hidden;
+
+			-moz-transform: rotateY(-180deg);
+			-moz-transform-style: preserve-3d;
+			-moz-backface-visibility: hidden;
+
+			/* -- transition is the magic sauce for animation -- */
+			-o-transition: all .4s ease-in-out;
+			-ms-transition: all .4s ease-in-out;
+			-moz-transition: all .4s ease-in-out;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}		
+		.tile.selected .back {
+			z-index: 1000;
+			-webkit-transform: rotateY(0deg);
+			-moz-transform: rotateY(0deg);
+		}
+
+				/* -- X axis rotation for click panel -- */
+		.tile .front {
+			cursor: pointer;
+			-webkit-transform: rotateY(0deg);
+			-moz-transform: rotateY(0deg);
+		}
+		.tile.selected .front {
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+		}
+		.tile .back {
+			cursor: pointer;
+			-webkit-transform: rotateY(-180deg);
+			-moz-transform: rotateY(-180deg);
+		}
+		.tile.selected .back {
+			-webkit-transform: rotateY(0deg);
+			-moz-transform: rotateY(0deg);
+		}	
