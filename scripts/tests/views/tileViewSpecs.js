@@ -1,15 +1,19 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['models/Tile',
-		'views/TileView'
+define([
+    'models/Tile',
+    'views/TileView'
 ], function (Tile, TileView) {
+    "use strict";
     describe('TileView', function () {
         var el, model, view;
 
         beforeEach(function () {
-        	el = $('<div>');
-            model = new Tile( { description : 'test tile' })
+            el = $('<div>');
+            model = new Tile(
+                { description: 'test tile' }
+            );
             view = new TileView({
-            	el: el,
+                el: el,
                 model: model
             });
             view.render();
@@ -27,15 +31,15 @@ define(['models/Tile',
         });
 
         it('Should remove selected class when model is not selected', function () {
-        	model.set('selected', false);
+            model.set('selected', false);
             view.render();
-        	expect(el.find('.selected').size()).toBe(0);
+            expect(el.find('.selected').size()).toBe(0);
         });
 
         it('Should add selected class when model is selected', function () {
-        	model.set('selected', true);
+            model.set('selected', true);
             view.render();
-        	expect(el.find('.selected').size()).toBe(1);
+            expect(el.find('.selected').size()).toBe(1);
         });
     });
 });
