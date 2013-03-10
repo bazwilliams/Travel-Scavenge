@@ -1,5 +1,6 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['jquery',
+define([
+    'jquery',
     'models/Config',
     'collections/Tiles',
     'views/GameView'

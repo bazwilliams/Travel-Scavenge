@@ -1,6 +1,8 @@
 /*global define, it, toBe, beforeEach, describe, spyOn, expect*/
-define(['models/Config'
+define([
+    'models/Config'
 ], function (Config) {
+    "use strict";
     describe('Config', function () {
         var model;
 
