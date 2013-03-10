@@ -2,6 +2,7 @@ define([
     'jquery',
     'backbone'
 ], function ($, Backbone) {
+    "use strict";
     var Config = Backbone.Model.extend({
         defaults: {
             gameSize: 3

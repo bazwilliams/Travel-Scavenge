@@ -5,7 +5,8 @@ require.config({
         underscore: '../libs/underscore-min',
         handlebars: '../libs/handlebars',
         backbone: '../libs/backbone-min',
-        bootstrap: '../libs/bootstrap.min'
+        bootstrap: '../libs/bootstrap.min',
+        text: '../libs/text'
     },
     shim: {
         underscore: {

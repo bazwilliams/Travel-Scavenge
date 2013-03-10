@@ -1,11 +1,12 @@
 /*global define*/
 define([
-	'jquery',
-	'backbone',
-	'models/Tile'
+    'jquery',
+    'backbone',
+    'models/Tile'
 ], function ($, Backbone, Tile) {
-	var Tiles = Backbone.Collection.extend({
-		model : Tile,
+    "use strict";
+    var Tiles = Backbone.Collection.extend({
+        model: Tile,
         getScore: function () {
             var score = 0;
             this.each(function (model) {
@@ -13,6 +14,6 @@ define([
             });
             return score;
         }
-	})
-	return Tiles;
+    });
+    return Tiles;
 });
