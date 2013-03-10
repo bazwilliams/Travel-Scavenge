@@ -3,9 +3,10 @@ define([
     'backbone'
 ], function ($, Backbone) {
     "use strict";
-    var Config = Backbone.Model.extend({
+    return Backbone.Model.extend({
         defaults: {
-            gameSize: 3
+            gameWidth: 2,
+            gameHeight: 4
         },
 
         initialize: function () {
@@ -20,9 +21,12 @@ define([
 
         removeTag: function (tag) {
             var tags = this.get('tags');
-            tags.splice(tags.indexOf(tag),1);
+            tags.splice(tags.indexOf(tag), 1);
             this.set('tags', tags);
+        },
+
+        tilesRequired: function () {
+            return this.get('gameWidth') * this.get('gameHeight');
         }
     });
-    return Config;
 });

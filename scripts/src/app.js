@@ -1,20 +1,30 @@
-/*global define*/
+/*global define, document*/
 define([
     'jquery',
     'backbone',
     'data',
+    'models/Config',
+    'models/Game',
     'views/TilesView',
-    'collections/Tiles',
     'extensions',
     'bootstrap'
-], function ($, Backbone, data, TilesView, Tiles) {
+], function ($, Backbone, data, Config, Game, TilesView) {
     "use strict";
     var initialize = function () {
-        var tilesView = new TilesView({
-            collection: new Tiles(data.getTiles())
+        var config, game, view;
+
+        config = new Config();
+
+        game = new Game({
+            config: config
         });
-        tilesView.render();
-        $(document).find('section').append(tilesView.el);
+
+        view = new TilesView({
+            collection: game.getTileSet(data.getTiles())
+        });
+        view.render();
+
+        $(document).find('section').append(view.el);
     };
 
     return {

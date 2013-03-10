@@ -4,10 +4,14 @@ define([
     'text!../../data/tiles.json'
 ], function ($, data) {
     "use strict";
-    var dict = $.parseJSON(data);
-    var getTiles = function () {
-        return dict['tiles'];
+    var dict, getTiles;
+
+    dict = $.parseJSON(data);
+
+    getTiles = function () {
+        return dict.tiles;
     };
+
     return {
         getTiles: getTiles
     };

@@ -1,4 +1,4 @@
-/*global define, it, beforeEach, describe, spyOn, expect*/
+/*global define, it, toBe, beforeEach, describe, spyOn, expect*/
 define(['models/Config'
 ], function (Config) {
     describe('Config', function () {
@@ -9,7 +9,8 @@ define(['models/Config'
         });
 
         it('Has default value for gameSize', function () {
-            expect(model.get('gameSize')).toBe(3);
+            expect(model.get('gameWidth')).toBe(2);
+            expect(model.get('gameHeight')).toBe(4);
         });
 
         it('Has default value for tags', function () {
@@ -26,6 +27,10 @@ define(['models/Config'
             model.addTag('banana');
             model.removeTag('test');
             expect(model.get('tags')[0]).toBe('banana');
+        });
+
+        it('Correctly specifies how many tiles are required', function () {
+            expect(model.tilesRequired()).toBe(8);
         });
     });
 });
