@@ -1,3 +1,4 @@
+/*global require*/
 require.config({
     baseUrl: 'scripts/src',
     paths: {
@@ -5,7 +6,6 @@ require.config({
         underscore: '../libs/underscore-min',
         handlebars: '../libs/handlebars',
         backbone: '../libs/backbone-min',
-        bootstrap: '../libs/bootstrap.min',
         text: '../libs/text'
     },
     shim: {
@@ -18,13 +18,11 @@ require.config({
         },
         handlebars: {
             exports: 'Handlebars'
-        },
-        bootstrap: {
-            exports: 'bootstrap'
         }
     }
 });
 
-require(['app'], function(app) {
-	app.initialize();
+require(['app'], function (app) {
+    "use strict";
+    app.initialize();
 });

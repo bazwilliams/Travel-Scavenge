@@ -1,23 +1,45 @@
 .tile {
-	-webkit-perspective: 600px;
-	-moz-perspective: 600px;
-	text-align: center;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    text-align: center;
     position: relative;
     width: 140px;
-    float: left;
-	height: 140px;
-    margin: 10px;
+    height: 140px;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.tile .thumbnail {
-	box-shadow: 3px 3px 15px rgba(92,92,92,0.1);
-	line-height: 140px;
+.tile .face {
+    box-shadow: 3px 3px 25px rgba(92, 92, 92, 0.1);
+    line-height: 140px;
     background: white;
+    border-radius: 3px;
+    border-color: #e5e5e5;
+    border-style: solid;
+    border-width: 1px;
 }
 
-.playarea.thumbnails {
-	padding: 10px;
-    margin: 10px;
+.playarea {
+    padding: 10px;
+    display: inline-block;
+}
+
+.game-row {
+    margin: 0;
+    padding: 0;
+}
+
+.playarea li {
+    padding: 0;
+    margin: 0;
+}
+
+.game-row > div {
+    display: inline-block;
+    padding: 10px;
+}
+
+.playarea .thumbnails {
 
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
@@ -29,81 +51,64 @@
 .playarea.game-complete {
     background: #d0e9c6;
 }
-		/* -- make sure to declare a default for every property that you want animated -- */
-		/* -- general styles, including Y axis rotation -- */
-		.tile .front {
-            position: absolute;
-            top: 0;
-            left: 0;
-			z-index: 900;
-			width: inherit;
-			height: inherit;
-			-webkit-transform: rotateX(0deg) rotateY(0deg);
-			-webkit-transform-style: preserve-3d;
-			-webkit-backface-visibility: hidden;
 
-			-moz-transform: rotateX(0deg) rotateY(0deg);
-			-moz-transform-style: preserve-3d;
-			-moz-backface-visibility: hidden;
+.tile .front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: inherit;
+    height: inherit;
+    display: inline-block;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
 
-			/* -- transition is the magic sauce for animation -- */
-			-o-transition: all .4s ease-in-out;
-			-ms-transition: all .4s ease-in-out;
-			-moz-transition: all .4s ease-in-out;
-			-webkit-transition: all .4s ease-in-out;
-			transition: all .4s ease-in-out;
-		}
-		.tile.selected .front {
-			z-index: 900;
-			-webkit-transform: rotateY(180deg);
-			-moz-transform: rotateY(180deg);
-		}
-		
-		.tile .back {
-			position: absolute;
-			top: 0;
-            left: 0;
-			z-index: 800;
-			width: inherit;
-			height: inherit;
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
 
-			-webkit-transform: rotateY(-180deg);
-			-webkit-transform-style: preserve-3d;
-			-webkit-backface-visibility: hidden;
+    /* -- transition is the magic sauce for animation -- */
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
 
-			-moz-transform: rotateY(-180deg);
-			-moz-transform-style: preserve-3d;
-			-moz-backface-visibility: hidden;
+.tile.selected .front {
+    z-index: 900;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
 
-			/* -- transition is the magic sauce for animation -- */
-			-o-transition: all .4s ease-in-out;
-			-ms-transition: all .4s ease-in-out;
-			-moz-transition: all .4s ease-in-out;
-			-webkit-transition: all .4s ease-in-out;
-			transition: all .4s ease-in-out;
-		}		
-		.tile.selected .back {
-			z-index: 1000;
-			-webkit-transform: rotateY(0deg);
-			-moz-transform: rotateY(0deg);
-		}
+.tile .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    width: inherit;
+    height: inherit;
+    display: inline-block;
 
-				/* -- X axis rotation for click panel -- */
-		.tile .front {
-			cursor: pointer;
-			-webkit-transform: rotateY(0deg);
-			-moz-transform: rotateY(0deg);
-		}
-		.tile.selected .front {
-			-webkit-transform: rotateY(180deg);
-			-moz-transform: rotateY(180deg);
-		}
-		.tile .back {
-			cursor: pointer;
-			-webkit-transform: rotateY(-180deg);
-			-moz-transform: rotateY(-180deg);
-		}
-		.tile.selected .back {
-			-webkit-transform: rotateY(0deg);
-			-moz-transform: rotateY(0deg);
-		}	
+    -webkit-transform: rotateY(-180deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+    -moz-transform: rotateY(-180deg);
+    -moz-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+
+    /* -- transition is the magic sauce for animation -- */
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.tile.selected .back {
+    z-index: 1000;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+}

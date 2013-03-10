@@ -4,10 +4,10 @@ define([
     'backbone',
     'handlebars',
     'models/Tile',
-    'text!templates/tile.html'
+    'text!templates/tileTemplate.html'
 ], function ($, Backbone, Handlebars, Tile, Template) {
     "use strict";
-    var TileView = Backbone.View.extend({
+    return Backbone.View.extend({
         initialize: function () {
             this.template = Handlebars.compile(Template);
         },
@@ -34,6 +34,5 @@ define([
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
         }
-    })
-    return TileView;
+    });
 });

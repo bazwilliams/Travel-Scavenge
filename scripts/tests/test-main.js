@@ -1,5 +1,7 @@
+/*global require, window*/
 var tests = Object.keys(window.__testacular__.files).filter(function (file) {
-    return /Specs\.js$/.test(file);
+    "use strict";
+    return (/Specs\.js$/).test(file);
 });
 
 require({
