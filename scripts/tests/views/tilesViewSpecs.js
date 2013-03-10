@@ -21,7 +21,6 @@ define(['collections/Tiles',
 
         it('Should add a game-complete class when score reaches the number of tiles in collection', function () {
             collection.at(0).set('selected', true);
-            dump(el.find('.playarea').attr('class'));
             expect(el.find('.game-complete').size()).toBe(1);
         });
     });
