@@ -1,6 +1,8 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
-define(['models/Tile'
+define([
+    'models/Tile'
 ], function (Tile) {
+    "use strict";
     describe('Tile', function () {
         var tile;
 
