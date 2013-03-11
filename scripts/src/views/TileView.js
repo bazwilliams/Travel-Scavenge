@@ -10,6 +10,7 @@ define([
     return Backbone.View.extend({
         initialize: function () {
             this.template = Handlebars.compile(Template);
+            this.model.on('change:selected', this.updateSide, this);
         },
 
         events: {
@@ -17,6 +18,16 @@ define([
         },
 
         onClose: function () {
+            this.model.off('change:selected', this.updateSide);
+        },
+
+        updateSide: function () {
+            var isSelected = this.model.get('selected');
+            if (isSelected) {
+                this.$el.find('.tile').addClass('selected');
+            } else {
+                this.$el.find('.tile').removeClass('selected');
+            }
         },
 
         toggle: function () {
@@ -24,8 +35,7 @@ define([
             if (wasSelected) {
                 this.$el.find('.tile').removeClass('selected');
                 this.model.set('selected', false);
-            }
-            else {
+            } else {
                 this.$el.find('.tile').addClass('selected');
                 this.model.set('selected', true);
             }

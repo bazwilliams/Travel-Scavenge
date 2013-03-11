@@ -29,17 +29,12 @@
     padding: 0;
 }
 
-.playarea li {
-    padding: 0;
-    margin: 0;
-}
-
 .game-row > div {
     display: inline-block;
     padding: 10px;
 }
 
-.playarea .thumbnails {
+.playarea {
 
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
