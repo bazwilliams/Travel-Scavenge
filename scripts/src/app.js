@@ -12,7 +12,11 @@ define([
     var initialize = function () {
         var config, game, view;
 
-        config = new Config();
+        config = new Config({
+            gameHeight: 2,
+            gameWidth: 3,
+            tags: ['animals']
+        });
 
         game = new Game({
             config: config

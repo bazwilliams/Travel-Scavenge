@@ -10,7 +10,9 @@ define([
         },
 
         initialize: function () {
-            this.set('tags', []);
+            if (!this.has('tags')) {
+                this.set('tags', []);
+            }
         },
 
         addTag: function (tag) {

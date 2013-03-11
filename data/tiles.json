@@ -1,31 +1,100 @@
 {
-	"tiles" : [ 
-		{
-			"description" : "lorry"
-		},
-		{
-			"description" : "car"
-		},
-		{
-			"description" : "motorbike"
-		},
-		{
-			"description" : "campervan"
-		},
-		{
-			"description" : "train"
-		},
-		{
-			"description" : "bus"
-		},
-		{
-			"description" : "wind turbine"
-		},
-		{
-			"description" : "petrol station"
-		},
-		{
-			"description" : "boat"
-		}
-	]
+    "tiles": [
+        {
+            "description": "lorry",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "car",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "motorbike",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "campervan",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "train",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "bus",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "boat",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "helicopter",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "aeroplane",
+            "tags": ["transportation"]
+        },
+        {
+            "description": "wind turbine",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "petrol station",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "supermarket",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "lake",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "tall building",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "bridge",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "airport",
+            "tags": ["landscape"]
+        },
+        {
+            "description": "cow",
+            "tags": ["animals"]
+        },
+        {
+            "description": "horse",
+            "tags": ["animals"]
+        },
+        {
+            "description": "goat",
+            "tags": ["animals"]
+        },
+        {
+            "description": "sheep",
+            "tags": ["animals"]
+        },
+        {
+            "description": "bird",
+            "tags": ["animals"]
+        },
+        {
+            "description": "donkey",
+            "tags": ["animals"]
+        },
+        {
+            "description": "dog",
+            "tags": ["animals"]
+        },
+        {
+            "description": "cat",
+            "tags": ["animals"]
+        }
+    ]
 }
