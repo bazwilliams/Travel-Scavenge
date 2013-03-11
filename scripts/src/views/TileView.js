@@ -31,14 +31,7 @@ define([
         },
 
         toggle: function () {
-            var wasSelected = this.model.get('selected');
-            if (wasSelected) {
-                this.$el.find('.tile').removeClass('selected');
-                this.model.set('selected', false);
-            } else {
-                this.$el.find('.tile').addClass('selected');
-                this.model.set('selected', true);
-            }
+            this.model.set('selected', !this.model.get('selected'));
         },
 
         render: function () {
