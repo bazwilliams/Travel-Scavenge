@@ -27,11 +27,11 @@ define([
                 },
                 {
                     "description": "five",
-                    "tags": ["a", "c"]
+                    "tags": ["b", "c"]
                 },
                 {
                     "description": "six",
-                    "tags": ["a", "c"]
+                    "tags": ["b", "c"]
                 },
                 {
                     "description": "seven",
@@ -43,17 +43,17 @@ define([
                 },
                 {
                     "description": "nine",
-                    "tags": ["a", "b"]
+                    "tags": ["b"]
                 },
                 {
                     "description": "ten",
-                    "tags": ["a", "b"]
+                    "tags": ["d", "b"]
                 }
             ];
             config = new Config({
                 gameWidth: 2,
                 gameHeight: 2,
-                tags: ['a', 'b']
+                tags: ['a']
             });
             sut = new Game({
                 config: config
@@ -65,12 +65,10 @@ define([
             expect(tileSet.size()).toBe(4);
         });
 
-        it('Should generate a TileSet not containing tiles tagged with C', function () {
+        it('Should generate a TileSet only containing tiles tagged with A', function () {
             var tileSet = sut.getTileSet(tiles);
             tileSet.each(function (model) {
-                model.get('tags').forEach(function (tag) {
-                    expect(tag).not.toBe('c');
-                });
+                expect(model.get('tags').indexOf('a')).not.toBe(-1);
             });
         });
     });
