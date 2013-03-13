@@ -26,16 +26,25 @@ define([
             });
         });
 
-        it('Correctly adds tags', function () {
+        it('Correctly adds new tags', function () {
             sut.addTag('addTest');
             expect(tags.get('addTest').get('selected')).toBe(true);
         });
 
-        it('Correctly removes tags', function () {
+        it('Correctly sets existing tags when adding', function () {
+            sut.addTag('tag1');
+            expect(tags.get('tag1').get('selected')).toBe(true);
+        });
+
+        it('Correctly deselects existing tags', function () {
             sut.addTag('test');
-            sut.addTag('banana');
             sut.removeTag('test');
-            expect(tags.get('addTest')).toBe(undefined);
+            expect(tags.get('test').get('selected')).toBe(false);
+        });
+
+        it('Correctly adds new tags setting unselected when removing tag from game', function () {
+            sut.removeTag('removeTest');
+            expect(tags.get('removeTest').get('selected')).toBe(false);
         });
 
         it('Correctly specifies how many tiles are required', function () {

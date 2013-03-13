@@ -22,9 +22,15 @@ define([
             this.set('tags', collection);
         },
 
-        removeTag: function (tag) {
-            var collection = this.get('tags');
-            collection.remove(tag);
+        removeTag: function (tagName) {
+            var collection, tag;
+            collection = this.get('tags');
+            tag = collection.get(tagName);
+            if (tag) {
+                tag.set('selected', false);
+            } else {
+                collection.add([{ id: tagName, selected: false}]);
+            }
             this.set('tags', collection);
         },
 
