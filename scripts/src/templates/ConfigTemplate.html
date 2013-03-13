@@ -9,7 +9,13 @@
         <input id="game-height" name="gameHeight" type="number" value="{{gameHeight}}" required>
     </label>
 
-    {{#each tags}}
-    <a class="game-tag {{#if selected}}toggled{{/if}}">{{id}}</a>
-    {{/each}}
+    <label>
+        Tags
+        <select id="game-tags" name="tags" multiple>
+            {{#each tags}}
+            <option class="game-tag" value="{{id}}"
+            {{#if selected}}selected{{/if}}>{{id}}</option>
+            {{/each}}
+        </select>
+    </label>
 </form>
