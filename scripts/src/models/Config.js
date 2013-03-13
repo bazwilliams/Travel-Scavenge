@@ -1,7 +1,8 @@
 define([
     'jquery',
-    'backbone'
-], function ($, Backbone) {
+    'backbone',
+    'collections/Tags'
+], function ($, Backbone, Tags) {
     "use strict";
     return Backbone.Model.extend({
         defaults: {
@@ -9,26 +10,30 @@ define([
             gameHeight: 4
         },
 
-        initialize: function () {
-            if (!this.has('tags')) {
-                this.set('tags', []);
+        addTag: function (tagName) {
+            var collection, tag;
+            collection = this.get('tags');
+            tag = collection.get(tagName);
+            if (tag) {
+                tag.set('selected', true);
+            } else {
+                collection.add([{ id : tagName, selected: true}]);
             }
-        },
-
-        addTag: function (tag) {
-            var tags = this.get('tags');
-            tags.push(tag);
-            this.set('tags', tags);
+            this.set('tags', collection);
         },
 
         removeTag: function (tag) {
-            var tags = this.get('tags');
-            tags.splice(tags.indexOf(tag), 1);
-            this.set('tags', tags);
+            var collection = this.get('tags');
+            collection.remove(tag);
+            this.set('tags', collection);
         },
 
         tilesRequired: function () {
             return this.get('gameWidth') * this.get('gameHeight');
+        },
+
+        getRequestedTags: function () {
+            return this.get('tags').pluck('id');
         }
     });
 });

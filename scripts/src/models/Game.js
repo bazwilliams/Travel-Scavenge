@@ -17,8 +17,8 @@ define([
 
         populateTileSet: function () {
             var shuffledTiles, requestedTags;
-            requestedTags = this.get('config').get('tags');
-            shuffledTiles = _.shuffle(this.get('tiles')).filter(function (tile) {
+            requestedTags = this.get('config').getRequestedTags();
+            shuffledTiles = _.shuffle(this.get('gameTiles')).filter(function (tile) {
                 return _.intersection(tile.tags, requestedTags).length > 0;
             });
             this.tileSet.reset(_.first(shuffledTiles, this.get('config').tilesRequired()));

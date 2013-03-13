@@ -8,4 +8,8 @@
         Game Height
         <input id="game-height" name="gameHeight" type="number" value="{{gameHeight}}" required>
     </label>
+
+    {{#each tags}}
+    <a class="game-tag {{#if selected}}toggled{{/if}}">{{id}}</a>
+    {{/each}}
 </form>

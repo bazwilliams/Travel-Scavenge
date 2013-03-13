@@ -13,7 +13,7 @@ define([
             config = new Config({
                 gameWidth: 4,
                 gameHeight: 2,
-                tags: []
+                tags: ['tag1', 'tag2', 'tag3', 'tag4']
             });
             sut = new ConfigView({
                 el: el,
@@ -52,6 +52,10 @@ define([
             el.find('#game-height').val('abc').change();
             el.find('#game-config').submit();
             expect(config.get('gameHeight')).toBe(2);
+        });
+
+        it('should render a list of toggleable tags to configure the game', function () {
+            expect(el.find('.game-tag').size()).toBe(4);
         });
     });
 });

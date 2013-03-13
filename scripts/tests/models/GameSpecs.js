@@ -1,14 +1,15 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
 define([
     'models/Game',
-    'models/Config'
-], function (Game, Config) {
+    'models/Config',
+    'collections/Tags'
+], function (Game, Config, Tags) {
     "use strict";
     describe('Game', function () {
-        var sut, config, tiles;
+        var sut, config, gameTiles;
 
         beforeEach(function () {
-            tiles = [
+            gameTiles = [
                 {
                     "description": "one",
                     "tags": ["a", "b"]
@@ -53,11 +54,11 @@ define([
             config = new Config({
                 gameWidth: 2,
                 gameHeight: 2,
-                tags: ['a']
+                tags: new Tags({ id : 'a' })
             });
             sut = new Game({
                 config: config,
-                tiles: tiles
+                gameTiles: gameTiles
             });
         });
 
@@ -81,7 +82,7 @@ define([
         });
 
         it('Should generate a new TileSet when config is changed', function () {
-            config.set('tags', ['d']);
+            config.set('tags', new Tags({ id : 'd'}));
             var tileSet = sut.getActiveTileSet();
             expect(tileSet.size()).toBe(1);
         });
