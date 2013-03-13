@@ -41,5 +41,17 @@ define([
             el.find('#game-config').submit();
             expect(config.get('gameHeight')).toBe(3);
         });
+
+        it('should fail gracefully if text is entered into width field', function () {
+            el.find('#game-width').val('abc').change();
+            el.find('#game-config').submit();
+            expect(config.get('gameWidth')).toBe(4);
+        });
+
+        it('should fail gracefully if text is entered into height field', function () {
+            el.find('#game-height').val('abc').change();
+            el.find('#game-config').submit();
+            expect(config.get('gameHeight')).toBe(2);
+        });
     });
 });

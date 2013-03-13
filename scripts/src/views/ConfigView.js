@@ -15,11 +15,17 @@ define([
         },
 
         updateWidth: function () {
-            this.model.set('gameWidth', parseInt(this.$el.find('#game-width').val()));
+            var newWidth = parseInt(this.$el.find('#game-width').val(), 10);
+            if (newWidth) {
+                this.model.set('gameWidth', newWidth);
+            }
         },
 
         updateHeight: function () {
-            this.model.set('gameHeight', parseInt(this.$el.find('#game-height').val()));
+            var newHeight = parseInt(this.$el.find('#game-height').val(), 10);
+            if (newHeight) {
+                this.model.set('gameHeight', newHeight);
+            }
         },
 
         render: function () {
