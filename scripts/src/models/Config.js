@@ -17,7 +17,9 @@ define([
             if (tag) {
                 tag.set('selected', true);
             } else {
-                collection.add([{ id : tagName, selected: true}]);
+                collection.add([
+                    { id: tagName, selected: true}
+                ]);
             }
             this.set('tags', collection);
         },
@@ -29,7 +31,9 @@ define([
             if (tag) {
                 tag.set('selected', false);
             } else {
-                collection.add([{ id: tagName, selected: false}]);
+                collection.add([
+                    { id: tagName, selected: false}
+                ]);
             }
             this.set('tags', collection);
         },
@@ -40,6 +44,14 @@ define([
 
         getRequestedTags: function () {
             return this.get('tags').pluck('id');
+        },
+
+        toJSON: function () {
+            return {
+                gameWidth: this.get('gameWidth'),
+                gameHeight: this.get('gameHeight'),
+                tags: this.get('tags').toJSON()
+            };
         }
     });
 });

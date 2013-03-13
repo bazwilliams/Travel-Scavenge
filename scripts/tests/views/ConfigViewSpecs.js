@@ -2,8 +2,9 @@
 define([
     'jquery',
     'models/Config',
-    'views/ConfigView'
-], function ($, Config, ConfigView) {
+    'views/ConfigView',
+    'collections/Tags'
+], function ($, Config, ConfigView, Tags) {
     "use strict";
     describe('ConfigView', function () {
         var config, el, sut;
@@ -13,7 +14,10 @@ define([
             config = new Config({
                 gameWidth: 4,
                 gameHeight: 2,
-                tags: ['tag1', 'tag2', 'tag3', 'tag4']
+                tags: new Tags()
+            });
+            ['tag1', 'tag2', 'tag3', 'tag4'].forEach(function (tagName) {
+                config.addTag(tagName);
             });
             sut = new ConfigView({
                 el: el,
@@ -56,6 +60,10 @@ define([
 
         it('should render a list of toggleable tags to configure the game', function () {
             expect(el.find('.game-tag').size()).toBe(4);
+        });
+
+        it('should display tag id', function () {
+            expect(el.find('.game-tag').text()).toContain('tag3');
         });
     });
 });
