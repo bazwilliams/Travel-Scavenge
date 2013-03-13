@@ -17,7 +17,7 @@ define([
         config = new Config({
             gameHeight: 2,
             gameWidth: 3,
-            tags: new Tags())
+            tags: new Tags()
         });
 
         data.getTiles().forEach( function (tagName) {
