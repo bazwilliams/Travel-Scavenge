@@ -2,9 +2,8 @@
 define([
     'jquery',
     'models/Config',
-    'views/ConfigView',
-    'collections/Tags'
-], function ($, Config, ConfigView, Tags) {
+    'views/ConfigView'
+], function ($, Config, ConfigView) {
     "use strict";
     describe('ConfigView', function () {
         var config, el, sut;
@@ -14,7 +13,7 @@ define([
             config = new Config({
                 gameWidth: 4,
                 gameHeight: 2,
-                tags: new Tags()
+                tags: []
             });
             ['tag1', 'tag2', 'tag3', 'tag4'].forEach(function (tagName) {
                 config.addTag(tagName);

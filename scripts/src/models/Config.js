@@ -1,41 +1,44 @@
 define([
+    'underscore',
     'jquery',
-    'backbone',
-    'collections/Tags'
-], function ($, Backbone, Tags) {
+    'backbone'
+], function (_, $, Backbone) {
     "use strict";
     return Backbone.Model.extend({
         defaults: {
             gameWidth: 2,
-            gameHeight: 4
+            gameHeight: 4,
+            tags: []
         },
 
         addTag: function (tagName) {
-            var collection, tag;
-            collection = this.get('tags');
-            tag = collection.get(tagName);
+            var tag, tags;
+            tags = this.get('tags');
+            tag = _.findWhere(tags, {id: tagName});
             if (tag) {
-                tag.set('selected', true);
+                tag.selected = true;
             } else {
-                collection.add([
-                    { id: tagName, selected: true}
-                ]);
+                tags.push({
+                    id: tagName,
+                    selected: true
+                });
             }
-            this.set('tags', collection);
+            this.set('tags', tags);
         },
 
         removeTag: function (tagName) {
-            var collection, tag;
-            collection = this.get('tags');
-            tag = collection.get(tagName);
+            var tag, tags;
+            tags = this.get('tags');
+            tag = _.findWhere(tags, {id: tagName});
             if (tag) {
-                tag.set('selected', false);
+                tag.selected = false;
             } else {
-                collection.add([
-                    { id: tagName, selected: false}
-                ]);
+                tags.push({
+                    id: tagName,
+                    selected: false
+                });
             }
-            this.set('tags', collection);
+            this.set('tags', tags);
         },
 
         tilesRequired: function () {
@@ -43,15 +46,7 @@ define([
         },
 
         getRequestedTags: function () {
-            return this.get('tags').pluck('id');
-        },
-
-        toJSON: function () {
-            return {
-                gameWidth: this.get('gameWidth'),
-                gameHeight: this.get('gameHeight'),
-                tags: this.get('tags').toJSON()
-            };
+            return _.pluck(this.get('tags'), 'id');
         }
     });
 });

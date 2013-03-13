@@ -1,15 +1,31 @@
 /*global define, it, toBe, beforeEach, describe, spyOn, expect*/
 define([
     'underscore',
-    'models/Config',
-    'collections/Tags'
-], function (_, Config, Tags) {
+    'models/Config'
+], function (_, Config) {
     "use strict";
     describe('Config', function () {
         var sut, tags;
 
         beforeEach(function () {
-            tags = new Tags([{id: 'tag1'}, {id: 'tag2'}, {id: 'tag3'}, {id: 'tag4'}]);
+            tags = [
+                {
+                    id: 'tag1',
+                    selected: false
+                },
+                {
+                    id: 'tag2',
+                    selected: false
+                },
+                {
+                    id: 'tag3',
+                    selected: false
+                },
+                {
+                    id: 'tag4',
+                    selected: false
+                }
+            ];
             sut = new Config({
                 tags: tags
             });
@@ -20,31 +36,25 @@ define([
             expect(sut.get('gameHeight')).toBe(4);
         });
 
-        it('Has default value for tags', function () {
-            sut.get('tags').each(function (tag) {
-                expect(tag.get('selected')).toBe(false);
-            });
-        });
-
         it('Correctly adds new tags', function () {
             sut.addTag('addTest');
-            expect(tags.get('addTest').get('selected')).toBe(true);
+            expect(_.findWhere(tags, {id: 'addTest'}).selected).toBe(true);
         });
 
         it('Correctly sets existing tags when adding', function () {
             sut.addTag('tag1');
-            expect(tags.get('tag1').get('selected')).toBe(true);
+            expect(_.findWhere(tags, {id: 'tag1'}).selected).toBe(true);
         });
 
         it('Correctly deselects existing tags', function () {
             sut.addTag('test');
             sut.removeTag('test');
-            expect(tags.get('test').get('selected')).toBe(false);
+            expect(_.findWhere(tags, {id: 'test'}).selected).toBe(false);
         });
 
         it('Correctly adds new tags setting unselected when removing tag from game', function () {
             sut.removeTag('removeTest');
-            expect(tags.get('removeTest').get('selected')).toBe(false);
+            expect(_.findWhere(tags, {id: 'removeTest'}).selected).toBe(false);
         });
 
         it('Correctly specifies how many tiles are required', function () {

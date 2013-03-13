@@ -1,9 +1,8 @@
 /*global define, it, beforeEach, describe, spyOn, expect*/
 define([
     'models/Game',
-    'models/Config',
-    'collections/Tags'
-], function (Game, Config, Tags) {
+    'models/Config'
+], function (Game, Config) {
     "use strict";
     describe('Game', function () {
         var sut, config, gameTiles;
@@ -54,7 +53,12 @@ define([
             config = new Config({
                 gameWidth: 2,
                 gameHeight: 2,
-                tags: new Tags({ id : 'a' })
+                tags: [
+                    {
+                        id: 'a',
+                        selected: false
+                    }
+                ]
             });
             sut = new Game({
                 config: config,
@@ -82,7 +86,9 @@ define([
         });
 
         it('Should generate a new TileSet when config is changed', function () {
-            config.set('tags', new Tags({ id : 'd'}));
+            config.set('tags', [
+                { id: 'd', selected: false}
+            ]);
             var tileSet = sut.getActiveTileSet();
             expect(tileSet.size()).toBe(1);
         });

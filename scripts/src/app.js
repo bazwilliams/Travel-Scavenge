@@ -7,9 +7,8 @@ define([
     'models/Game',
     'views/ConfigView',
     'views/GameView',
-    'collections/Tags',
     'extensions'
-], function ($, Backbone, data, Config, Game, ConfigView, GameView, Tags) {
+], function ($, Backbone, data, Config, Game, ConfigView, GameView) {
     "use strict";
     var initialize = function () {
         var config, configView, game, gameView;
@@ -17,7 +16,7 @@ define([
         config = new Config({
             gameHeight: 2,
             gameWidth: 3,
-            tags: new Tags()
+            tags: []
         });
 
         data.getTiles().forEach(function (tile) {
