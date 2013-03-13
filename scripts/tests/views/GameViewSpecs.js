@@ -46,5 +46,19 @@ define([
         it('Should have 3 rows', function () {
             expect(el.find('.game-row').size()).toBe(3);
         });
+
+        it('Should render when collection is reset', function () {
+            config.set('gameHeight', 2);
+            collection.reset([
+                { description: 'alice' },
+                { description: 'bob' }
+            ]);
+            expect(el.find('.game-row').size()).toBe(2);
+        });
+
+        it('Should fail gracefully if not enough tiles can be displayed', function () {
+            config.set('gameHeight', 10);
+            collection.reset([]);
+        });
     });
 });

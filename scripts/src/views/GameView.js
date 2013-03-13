@@ -15,10 +15,12 @@ define([
             this.template = Handlebars.compile(GameTemplate);
             this.rowTemplate = Handlebars.compile(GameRowTemplate);
             this.collection.on('change', this.checkForWin, this);
+            this.collection.on('reset', this.render, this);
         },
 
         onClose: function () {
             this.collection.off('change', this.checkForWin);
+            this.collection.off('reset', this.render);
         },
 
         checkForWin: function () {
@@ -39,13 +41,16 @@ define([
             _.range(0, gameHeight).forEach(function (rowIndex) {
                 var rowEl = $(self.rowTemplate());
                 _.range(0, gameWidth).forEach(function (colIndex) {
-                    var tileView, collectionIndex;
+                    var model, tileView, collectionIndex;
                     collectionIndex = rowIndex * gameWidth + colIndex;
-                    tileView = new TileView({
-                        model: self.collection.at(collectionIndex)
-                    });
-                    tileView.render();
-                    rowEl.append(tileView.el);
+                    model = self.collection.at(collectionIndex);
+                    if (model) {
+                        tileView = new TileView({
+                            model: model
+                        });
+                        tileView.render();
+                        rowEl.append(tileView.el);
+                    }
                 });
                 gameEl.append(rowEl);
             });

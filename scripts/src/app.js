@@ -5,12 +5,13 @@ define([
     'data',
     'models/Config',
     'models/Game',
+    'views/ConfigView',
     'views/GameView',
     'extensions'
-], function ($, Backbone, data, Config, Game, GameView) {
+], function ($, Backbone, data, Config, Game, ConfigView, GameView) {
     "use strict";
     var initialize = function () {
-        var config, game, view;
+        var config, configView, game, gameView;
 
         config = new Config({
             gameHeight: 2,
@@ -18,17 +19,23 @@ define([
             tags: ['animals']
         });
 
+        configView = new ConfigView({
+            model: config
+        });
+        configView.render();
+        $(document).find('section').append(configView.el);
+
         game = new Game({
-            config: config
+            config: config,
+            tiles: data.getTiles()
         });
 
-        view = new GameView({
-            collection: game.getTileSet(data.getTiles()),
+        gameView = new GameView({
+            collection: game.getActiveTileSet(),
             config: config
         });
-        view.render();
-
-        $(document).find('section').append(view.el);
+        gameView.render();
+        $(document).find('section').append(gameView.el);
     };
 
     return {

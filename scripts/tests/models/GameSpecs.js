@@ -27,7 +27,7 @@ define([
                 },
                 {
                     "description": "five",
-                    "tags": ["b", "c"]
+                    "tags": ["a", "c"]
                 },
                 {
                     "description": "six",
@@ -56,20 +56,34 @@ define([
                 tags: ['a']
             });
             sut = new Game({
-                config: config
+                config: config,
+                tiles: tiles
             });
         });
 
+        it('Repeat calls to getActiveTileSet should return the same set', function () {
+            var tileSet, repeatTileSet;
+            tileSet = sut.getActiveTileSet();
+            repeatTileSet = sut.getActiveTileSet();
+            expect(repeatTileSet).toBe(tileSet);
+        });
+
         it('Should generate a TileSet containing 4 tiles', function () {
-            var tileSet = sut.getTileSet(tiles);
+            var tileSet = sut.getActiveTileSet();
             expect(tileSet.size()).toBe(4);
         });
 
         it('Should generate a TileSet only containing tiles tagged with A', function () {
-            var tileSet = sut.getTileSet(tiles);
+            var tileSet = sut.getActiveTileSet();
             tileSet.each(function (model) {
                 expect(model.get('tags').indexOf('a')).not.toBe(-1);
             });
+        });
+
+        it('Should generate a new TileSet when config is changed', function () {
+            config.set('tags', ['d']);
+            var tileSet = sut.getActiveTileSet();
+            expect(tileSet.size()).toBe(1);
         });
     });
 });
