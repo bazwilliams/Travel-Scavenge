@@ -3,6 +3,6 @@
 	  "testacular": "~0.6"
 	},
 	"scripts": {
-	   "test": "./node_modules/.bin/testacular start --single-run --browsers PhantomJS"
+	   "test": "./node_modules/.bin/testacular start --single-run --browsers PhantomJS,Firefox"
 	}
 }
