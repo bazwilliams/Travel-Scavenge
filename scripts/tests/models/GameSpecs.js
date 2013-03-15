@@ -56,7 +56,7 @@ define([
                 tags: [
                     {
                         id: 'a',
-                        selected: false
+                        selected: true
                     }
                 ]
             });
@@ -87,7 +87,7 @@ define([
 
         it('Should generate a new TileSet when config is changed', function () {
             config.set('tags', [
-                { id: 'd', selected: false}
+                { id: 'd', selected: true}
             ]);
             var tileSet = sut.getActiveTileSet();
             expect(tileSet.size()).toBe(1);

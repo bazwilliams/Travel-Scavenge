@@ -46,7 +46,7 @@ define([
         },
 
         getRequestedTags: function () {
-            return _.pluck(this.get('tags'), 'id');
+            return _.pluck(_.where(this.get('tags'), {selected: true}), 'id');
         }
     });
 });

@@ -64,5 +64,13 @@ define([
         it('should display tag id', function () {
             expect(el.find('.game-tag').text()).toContain('tag3');
         });
+
+        it('should update the model when a tag is selected', function () {
+            el.find('#game-tags option[value=tag1]').attr('selected', false).change();
+            el.find('#game-tags option[value=tag2]').attr('selected', true).change();
+            el.find('#game-tags option[value=tag3]').attr('selected', false).change();
+            el.find('#game-tags option[value=tag4]').attr('selected', false).change();
+            expect(config.getRequestedTags()[0]).toBe('tag2');
+        });
     });
 });

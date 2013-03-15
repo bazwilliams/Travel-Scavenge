@@ -60,5 +60,11 @@ define([
         it('Correctly specifies how many tiles are required', function () {
             expect(sut.tilesRequired()).toBe(8);
         });
+
+        it('Correctly specifies the selected tags', function () {
+            sut.addTag('tag3');
+            expect(sut.getRequestedTags().length).toBe(1);
+            expect(sut.getRequestedTags()[0]).toBe('tag3');
+        });
     });
 });
