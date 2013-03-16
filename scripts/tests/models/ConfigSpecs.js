@@ -36,33 +36,12 @@ define([
             expect(sut.get('gameHeight')).toBe(4);
         });
 
-        it('Correctly adds new tags', function () {
-            sut.addTag('addTest');
-            expect(_.findWhere(tags, {id: 'addTest'}).selected).toBe(true);
-        });
-
-        it('Correctly sets existing tags when adding', function () {
-            sut.addTag('tag1');
-            expect(_.findWhere(tags, {id: 'tag1'}).selected).toBe(true);
-        });
-
-        it('Correctly deselects existing tags', function () {
-            sut.addTag('test');
-            sut.removeTag('test');
-            expect(_.findWhere(tags, {id: 'test'}).selected).toBe(false);
-        });
-
-        it('Correctly adds new tags setting unselected when removing tag from game', function () {
-            sut.removeTag('removeTest');
-            expect(_.findWhere(tags, {id: 'removeTest'}).selected).toBe(false);
-        });
-
-        it('Correctly specifies how many tiles are required', function () {
+        it('Should specify how many tiles are required', function () {
             expect(sut.tilesRequired()).toBe(8);
         });
 
-        it('Correctly specifies the selected tags', function () {
-            sut.addTag('tag3');
+        it('Should specify the selected tags', function () {
+            sut.setTags(['tag3']);
             expect(sut.getRequestedTags().length).toBe(1);
             expect(sut.getRequestedTags()[0]).toBe('tag3');
         });

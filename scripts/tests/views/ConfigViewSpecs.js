@@ -9,14 +9,19 @@ define([
         var config, el, sut;
 
         beforeEach(function () {
+            var tags = [];
             el = $('<div>');
+
+            ['tag1', 'tag2', 'tag3', 'tag4'].forEach(function (tagName) {
+                tags.push({
+                    id: tagName,
+                    selected: false
+                });
+            });
             config = new Config({
                 gameWidth: 4,
                 gameHeight: 2,
-                tags: []
-            });
-            ['tag1', 'tag2', 'tag3', 'tag4'].forEach(function (tagName) {
-                config.addTag(tagName);
+                tags: tags
             });
             sut = new ConfigView({
                 el: el,
@@ -71,6 +76,14 @@ define([
             el.find('#game-tags option[value=tag3]').attr('selected', false).change();
             el.find('#game-tags option[value=tag4]').attr('selected', false).change();
             expect(config.getRequestedTags()[0]).toBe('tag2');
+        });
+
+        it('should update the model when a tag is selected', function () {
+            el.find('#game-tags option[value=tag1]').attr('selected', false).change();
+            el.find('#game-tags option[value=tag2]').attr('selected', false).change();
+            el.find('#game-tags option[value=tag3]').attr('selected', false).change();
+            el.find('#game-tags option[value=tag4]').attr('selected', false).change();
+            expect(config.getRequestedTags().length).toBe(0);
         });
     });
 });

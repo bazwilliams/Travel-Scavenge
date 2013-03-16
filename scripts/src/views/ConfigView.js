@@ -30,7 +30,8 @@ define([
         },
 
         updateTags: function () {
-            this.model.setTags(this.$el.find('#game-tags').val());
+            var selectedTags = this.$el.find('#game-tags').val() || [];
+            this.model.setTags(selectedTags);
         },
 
         render: function () {

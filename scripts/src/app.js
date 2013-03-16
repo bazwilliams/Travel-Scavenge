@@ -1,5 +1,6 @@
 /*global define, document*/
 define([
+    'underscore',
     'jquery',
     'backbone',
     'data',
@@ -8,21 +9,23 @@ define([
     'views/ConfigView',
     'views/GameView',
     'extensions'
-], function ($, Backbone, data, Config, Game, ConfigView, GameView) {
+], function (_, $, Backbone, data, Config, Game, ConfigView, GameView) {
     "use strict";
     var initialize = function () {
-        var config, configView, game, gameView;
+        var config, configView, game, gameView, tags;
+
+        tags = [];
+        _.uniq(_.flatten(_.pluck(data.getTiles(), 'tags'))).forEach(function (tagName) {
+            tags.push({
+                'id': tagName,
+                'selected': true
+            });
+        });
 
         config = new Config({
             gameHeight: 2,
             gameWidth: 3,
-            tags: []
-        });
-
-        data.getTiles().forEach(function (tile) {
-            tile.tags.forEach(function (tagName) {
-                config.addTag(tagName);
-            });
+            tags: tags
         });
 
         configView = new ConfigView({
