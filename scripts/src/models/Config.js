@@ -7,8 +7,20 @@ define([
     return Backbone.Model.extend({
         defaults: {
             gameWidth: 2,
-            gameHeight: 4,
-            tags: []
+            gameHeight: 4
+        },
+
+        setTags: function (selectedTags) {
+            var tags = this.get('tags');
+            tags.forEach(function (tag) {
+                tag.selected = false;
+            });
+            selectedTags.forEach(function (tag) {
+                _.where(tags, { id: tag })[0].selected = true;
+            });
+            this.set('tags', tags);
+            this.trigger('change');
+            this.trigger('change:tags');
         },
 
         addTag: function (tagName) {

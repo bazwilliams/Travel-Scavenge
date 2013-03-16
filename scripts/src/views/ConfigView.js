@@ -30,18 +30,7 @@ define([
         },
 
         updateTags: function () {
-            var tags, selectedTags;
-            tags = this.model.get('tags');
-            tags.forEach(function (tag) {
-                tag.selected = false;
-            });
-            selectedTags = this.$el.find('#game-tags').val();
-            selectedTags.forEach(function (tag) {
-                _.where(tags, { id: tag })[0].selected = true;
-            });
-            this.model.set('tags', tags);
-            this.model.trigger('change');
-            this.model.trigger('change:tags');
+            this.model.setTags(this.$el.find('#game-tags').val());
         },
 
         render: function () {
