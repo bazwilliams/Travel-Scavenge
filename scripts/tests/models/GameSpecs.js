@@ -92,5 +92,14 @@ define([
             var tileSet = sut.getActiveTileSet();
             expect(tileSet.size()).toBe(1);
         });
+
+        it('Should destory existing tiles when config is changed', function () {
+            var model = sut.getActiveTileSet().at(0);
+            spyOn(model, 'destroy');
+            config.set('tags', [
+                { id: 'd', selected: true}
+            ]);
+            expect(model.destroy).toHaveBeenCalled();
+        })
     });
 });

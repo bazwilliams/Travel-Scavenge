@@ -16,12 +16,15 @@ define([
         },
 
         populateTileSet: function () {
-            var shuffledTiles, requestedTags;
+            var newTiles, requestedTags;
             requestedTags = this.get('config').getRequestedTags();
-            shuffledTiles = _.shuffle(this.get('gameTiles')).filter(function (tile) {
+            newTiles = _.first(_.shuffle(this.get('gameTiles')).filter(function (tile) {
                 return _.intersection(tile.tags, requestedTags).length > 0;
+            }), this.get('config').tilesRequired());
+            this.tileSet.each(function (model) {
+                model.destroy();
             });
-            this.tileSet.reset(_.first(shuffledTiles, this.get('config').tilesRequired()));
+            this.tileSet.reset(newTiles);
         }
     });
 });
