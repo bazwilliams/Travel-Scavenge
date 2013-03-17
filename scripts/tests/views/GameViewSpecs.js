@@ -61,5 +61,11 @@ define([
             config.set('gameHeight', 10);
             collection.reset([]);
         });
+
+        it('Should call checkForWin when rendering', function () {
+            spyOn(view, 'checkForWin');
+            view.render();
+            expect(view.checkForWin).toHaveBeenCalled();
+        });
     });
 });

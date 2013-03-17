@@ -8,6 +8,7 @@ define([
         var sut, config, gameTiles;
 
         beforeEach(function () {
+            spyOn(Backbone, 'sync');
             gameTiles = [
                 {
                     "description": "one",
@@ -100,6 +101,10 @@ define([
                 { id: 'd', selected: true}
             ]);
             expect(model.destroy).toHaveBeenCalled();
-        })
+        });
+
+        it('Should have called fetch() when initialising', function () {
+            expect(Backbone.sync).toHaveBeenCalledWith('read', jasmine.any(Object), jasmine.any(Object));
+        });
     });
 });

@@ -7,7 +7,10 @@ define([
     return Backbone.Model.extend({
         initialize: function () {
             this.tileSet = new Tiles();
-            this.populateTileSet();
+            this.tileSet.fetch();
+            if (this.tileSet.size() === 0) {
+                this.populateTileSet();
+            }
             this.get('config').on('change', this.populateTileSet, this);
         },
 
@@ -16,15 +19,19 @@ define([
         },
 
         populateTileSet: function () {
-            var newTiles, requestedTags;
+            var newTiles, requestedTags, tileSet, modelToBeDestroyed;
+            tileSet = this.tileSet;
             requestedTags = this.get('config').getRequestedTags();
-            newTiles = _.first(_.shuffle(this.get('gameTiles')).filter(function (tile) {
+            newTiles = _.shuffle(this.get('gameTiles')).filter(function (tile) {
                 return _.intersection(tile.tags, requestedTags).length > 0;
-            }), this.get('config').tilesRequired());
-            this.tileSet.each(function (model) {
-                model.destroy();
             });
-            this.tileSet.reset(newTiles);
+            while (modelToBeDestroyed = tileSet.pop()) {
+                modelToBeDestroyed.destroy();
+            }
+            _.first(newTiles, this.get('config').tilesRequired()).forEach(function (newTile) {
+                tileSet.add(newTile);
+            });
+            tileSet.trigger('reset');
         }
     });
 });

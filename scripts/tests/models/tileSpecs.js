@@ -4,16 +4,27 @@ define([
 ], function (Tile) {
     "use strict";
     describe('Tile', function () {
-        var tile;
+        var sut;
 
         beforeEach(function () {
-            tile = new Tile({
+            sut = new Tile({
                 description: 'test tile'
             });
+            spyOn(sut, 'save');
         });
 
         it('selected should be false', function () {
-            expect(tile.get('selected')).toBe(false);
+            expect(sut.get('selected')).toBe(false);
+        });
+
+        it('should call save on add', function () {
+            sut.trigger('add');
+            expect(sut.save).toHaveBeenCalled();
+        });
+
+        it('should call save on change', function () {
+            sut.trigger('change');
+            expect(sut.save).toHaveBeenCalled();
         });
     });
 });

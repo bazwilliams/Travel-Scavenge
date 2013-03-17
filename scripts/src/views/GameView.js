@@ -55,6 +55,7 @@ define([
                 gameEl.append(rowEl);
             });
             self.$el.html(gameEl);
+            this.checkForWin();
         }
     });
 });

@@ -40,7 +40,6 @@ define([
         });
 
         tiles = game.getActiveTileSet();
-//        tiles.fetch();
 
         gameView = new GameView({
             collection: tiles,
