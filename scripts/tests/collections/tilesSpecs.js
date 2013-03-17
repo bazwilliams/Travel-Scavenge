@@ -4,27 +4,27 @@ define([
 ], function (Tiles) {
     "use strict";
     describe('Tiles', function () {
-        var collection;
+        var sut;
 
         beforeEach(function () {
-            collection = new Tiles([
+            sut = new Tiles([
                 {
-                    description: 'one',
+                    id: 'one',
                     selected: true
                 },
                 {
-                    description: 'two',
+                    id: 'two',
                     selected: false
                 },
                 {
-                    description: 'three',
+                    id: 'three',
                     selected: true
                 }
             ]);
         });
 
-        it('Score should be 2', function () {
-            expect(collection.getScore()).toBe(2);
+        it('score should be 2', function () {
+            expect(sut.getScore()).toBe(2);
         });
     });
 });

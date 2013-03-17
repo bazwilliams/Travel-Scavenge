@@ -1,13 +1,14 @@
 /*global define*/
 define([
     'jquery',
-    'backbone'
+    'backbone',
+    'localstorage'
 ], function ($, Backbone) {
     "use strict";
-    var Tile = Backbone.Model.extend({
+    return Backbone.Model.extend({
+        idAttribute: "description",
         defaults: {
             selected: false
         }
     });
-    return Tile;
 });

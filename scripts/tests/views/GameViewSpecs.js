@@ -16,6 +16,7 @@ define([
                 { description: 'bob' },
                 { description: 'dave' }
             ]);
+            spyOn(collection, 'sync');
             config = new Config({
                 gameWidth: 1,
                 gameHeight: 3

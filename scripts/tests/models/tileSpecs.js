@@ -12,7 +12,7 @@ define([
             });
         });
 
-        it('Selected should be false', function () {
+        it('selected should be false', function () {
             expect(tile.get('selected')).toBe(false);
         });
     });

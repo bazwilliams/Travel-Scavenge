@@ -12,7 +12,7 @@ define([
 ], function (_, $, Backbone, data, Config, Game, ConfigView, GameView) {
     "use strict";
     var initialize = function () {
-        var config, configView, game, gameView, tags;
+        var config, configView, game, gameView, tags, tiles;
 
         tags = [];
         _.uniq(_.flatten(_.pluck(data.getTiles(), 'tags'))).forEach(function (tagName) {
@@ -23,10 +23,10 @@ define([
         });
 
         config = new Config({
-            gameHeight: 2,
-            gameWidth: 3,
             tags: tags
         });
+
+        config.fetch();
 
         configView = new ConfigView({
             model: config
@@ -39,8 +39,11 @@ define([
             gameTiles: data.getTiles()
         });
 
+        tiles = game.getActiveTileSet();
+//        tiles.fetch();
+
         gameView = new GameView({
-            collection: game.getActiveTileSet(),
+            collection: tiles,
             config: config
         });
         gameView.render();
@@ -49,5 +52,5 @@ define([
 
     return {
         initialize: initialize
-    }
+    };
 });

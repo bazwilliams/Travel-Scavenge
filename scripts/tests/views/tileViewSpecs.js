@@ -12,6 +12,7 @@ define([
             model = new Tile(
                 { description: 'test tile' }
             );
+            spyOn(model, 'save');
             view = new TileView({
                 el: el,
                 model: model

@@ -6,6 +6,7 @@ require.config({
         underscore: '../libs/underscore-min',
         handlebars: '../libs/handlebars',
         backbone: '../libs/backbone-min',
+        localstorage: '../libs/backbone.localStorage-min',
         text: '../libs/text'
     },
     shim: {
@@ -15,6 +16,10 @@ require.config({
         backbone: {
             deps: ['underscore', 'jquery'],
             exports: 'Backbone'
+        },
+        localstorage: {
+            deps: ['backbone'],
+            exports: 'Backbone.localStorage'
         },
         handlebars: {
             exports: 'Handlebars'

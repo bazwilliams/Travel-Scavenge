@@ -1,13 +1,26 @@
 define([
     'underscore',
     'jquery',
-    'backbone'
+    'backbone',
+    'localstorage'
 ], function (_, $, Backbone) {
     "use strict";
     return Backbone.Model.extend({
+
+        localStorage: new Backbone.LocalStorage("Config"),
+
         defaults: {
             gameWidth: 2,
             gameHeight: 4
+        },
+
+        initialize: function () {
+            this.id = 'Config';
+            this.on('change', this.saveModel, this);
+        },
+
+        saveModel: function () {
+            this.save();
         },
 
         setTags: function (selectedTags) {

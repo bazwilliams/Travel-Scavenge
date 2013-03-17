@@ -27,6 +27,7 @@ define([
                 }
             ];
             sut = new Config({
+                localStorage: undefined,
                 tags: tags
             });
         });
@@ -44,6 +45,12 @@ define([
             sut.setTags(['tag3']);
             expect(sut.getRequestedTags().length).toBe(1);
             expect(sut.getRequestedTags()[0]).toBe('tag3');
+        });
+
+        it('Should save when config is changed', function () {
+            spyOn(sut, 'save');
+            sut.set('gameWidth', 3);
+            expect(sut.save).toHaveBeenCalled();
         });
     });
 });
