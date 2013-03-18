@@ -32,7 +32,7 @@ define([
             model: config
         });
         configView.render();
-        $(document).find('section').append(configView.el);
+        $(document).find('#config').append(configView.el);
 
         game = new Game({
             config: config,
@@ -46,7 +46,7 @@ define([
             config: config
         });
         gameView.render();
-        $(document).find('section').append(gameView.el);
+        $(document).find('.container').append(gameView.el);
     };
 
     return {
