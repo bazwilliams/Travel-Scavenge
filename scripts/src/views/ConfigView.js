@@ -1,10 +1,11 @@
 define([
     'backbone',
     'handlebars',
-    'text!templates/ConfigTemplate.html'
+    'text!templates/ConfigTemplate.html',
+    'modaldialog'
 ], function (Backbone, Handlebars, ConfigTemplate) {
     "use strict";
-    return Backbone.View.extend({
+    return Backbone.ModalView.extend({
         initialize: function () {
             this.template = Handlebars.compile(ConfigTemplate);
         },
@@ -36,6 +37,7 @@ define([
 
         render: function () {
             this.$el.append(this.template(this.model.toJSON()));
+            return this;
         }
     });
 });

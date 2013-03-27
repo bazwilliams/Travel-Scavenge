@@ -31,8 +31,13 @@ define([
         configView = new ConfigView({
             model: config
         });
-        configView.render();
-        $(document).find('#config').append(configView.el);
+
+        $('#btn-configure').on('click', function () {
+            configView.render().showModal({
+                closeImageUrl: "resources/close-modal.png",
+                closeImageHoverUrl: "resources/close-modal-hover.png"
+            });
+        });
 
         game = new Game({
             config: config,

@@ -7,6 +7,7 @@ require.config({
         handlebars: '../libs/handlebars',
         backbone: '../libs/backbone-min',
         localstorage: '../libs/backbone.localStorage-min',
+        modaldialog: '../libs/Backbone.ModalDialog',
         text: '../libs/text'
     },
     shim: {
@@ -23,6 +24,10 @@ require.config({
         },
         handlebars: {
             exports: 'Handlebars'
+        },
+        modaldialog: {
+            deps: ['backbone'],
+            exports: 'Backbone.ModalDialog'
         }
     }
 });

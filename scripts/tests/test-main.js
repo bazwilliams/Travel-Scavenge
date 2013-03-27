@@ -12,6 +12,7 @@ require({
         handlebars: '../libs/handlebars',
         backbone: '../libs/backbone-min',
         localstorage: '../libs/backbone.localStorage-min',
+        modaldialog: '../libs/Backbone.ModalDialog',
         require: '../libs/require',
         text: '../libs/text'
     },
@@ -29,6 +30,10 @@ require({
         },
         handlebars: {
             exports: 'Handlebars'
+        },
+        modaldialog: {
+            deps: ['backbone'],
+            exports: 'Backbone.ModalDialog'
         }
     },
     deps: tests,
