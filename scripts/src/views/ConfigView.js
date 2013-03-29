@@ -13,7 +13,8 @@ define([
         events: {
             'change #game-width': 'updateWidth',
             'change #game-height': 'updateHeight',
-            'change #game-tags': 'updateTags'
+            'change #game-tags': 'updateTags',
+            'submit form': 'silly'
         },
 
         updateWidth: function () {
@@ -21,6 +22,10 @@ define([
             if (newWidth) {
                 this.model.set('gameWidth', newWidth);
             }
+        },
+
+        silly: function () {
+
         },
 
         updateHeight: function () {
@@ -36,7 +41,7 @@ define([
         },
 
         render: function () {
-            this.$el.append(this.template(this.model.toJSON()));
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
     });

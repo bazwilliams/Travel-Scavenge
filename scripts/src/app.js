@@ -6,13 +6,13 @@ define([
     'data',
     'models/Config',
     'models/Game',
-    'views/ConfigView',
+    'views/NavBarView',
     'views/GameView',
     'extensions'
-], function (_, $, Backbone, data, Config, Game, ConfigView, GameView) {
+], function (_, $, Backbone, data, Config, Game, ConfigBarView, GameView) {
     "use strict";
     var initialize = function () {
-        var config, configView, game, gameView, tags, tiles;
+        var config, game, gameView, configBarView, tags, tiles;
 
         tags = [];
         _.uniq(_.flatten(_.pluck(data.getTiles(), 'tags'))).forEach(function (tagName) {
@@ -28,16 +28,11 @@ define([
 
         config.fetch();
 
-        configView = new ConfigView({
+        configBarView = new ConfigBarView({
             model: config
         });
-
-        $('#btn-configure').on('click', function () {
-            configView.render().showModal({
-                closeImageUrl: "resources/close-modal.png",
-                closeImageHoverUrl: "resources/close-modal-hover.png"
-            });
-        });
+        configBarView.render();
+        $(document).find('#config').append(configBarView.el);
 
         game = new Game({
             config: config,
