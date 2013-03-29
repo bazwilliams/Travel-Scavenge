@@ -14,7 +14,7 @@ define([
             'change #game-width': 'updateWidth',
             'change #game-height': 'updateHeight',
             'change #game-tags': 'updateTags',
-            'submit form': 'silly'
+            'submit form': 'submit'
         },
 
         updateWidth: function () {
@@ -24,8 +24,9 @@ define([
             }
         },
 
-        silly: function () {
-
+        submit: function (e) {
+            e.preventDefault();
+            this.hideModal();
         },
 
         updateHeight: function () {
