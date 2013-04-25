@@ -10,15 +10,11 @@ define([
     return Backbone.View.extend({
         initialize: function () {
             this.template = Handlebars.compile(Template);
-            this.model.on('change:selected', this.updateSide, this);
+            this.listenTo(this.model, 'change:selected', this.updateSide);
         },
 
         events: {
             'click .tile': 'toggle'
-        },
-
-        onClose: function () {
-            this.model.off('change:selected', this.updateSide);
         },
 
         updateSide: function () {

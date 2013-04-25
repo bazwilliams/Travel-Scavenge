@@ -20,6 +20,11 @@ define([
             view.render();
         });
 
+        it('Should add selected class when model is clicked', function () {
+            el.find('.tile').click();
+            expect(el.find('.selected').size()).toBe(1);
+        });
+
         it('Model selected property should be true when tile is clicked', function () {
             el.find('.tile').click();
             expect(model.get('selected')).toBe(true);

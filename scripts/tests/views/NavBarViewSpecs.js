@@ -36,8 +36,9 @@ define([
             expect(el.find('.config-button').size()).toBe(1);
         });
 
-        xit('should invoke configure() when button clicked', function () {
+        it('should invoke configure() when button clicked', function () {
             spyOn(sut, 'showConfig');
+            sut.delegateEvents();
             el.find('.config-button').click();
             expect(sut.showConfig).toHaveBeenCalled();
         });

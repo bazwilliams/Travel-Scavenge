@@ -14,13 +14,8 @@ define([
         initialize: function () {
             this.template = Handlebars.compile(GameTemplate);
             this.rowTemplate = Handlebars.compile(GameRowTemplate);
-            this.collection.on('change', this.checkForWin, this);
-            this.collection.on('reset', this.render, this);
-        },
-
-        onClose: function () {
-            this.collection.off('change', this.checkForWin);
-            this.collection.off('reset', this.render);
+            this.listenTo(this.collection, 'change', this.checkForWin);
+            this.listenTo(this.collection, 'reset', this.render);
         },
 
         checkForWin: function () {
