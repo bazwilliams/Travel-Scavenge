@@ -1,6 +1,6 @@
 {
 	"devDependencies": {
-	  "testacular": "~0.6"
+	  "karma": "~0.8"
 	},
 	"scripts": {
 	   "test": "./node_modules/.bin/testacular start --single-run --browsers PhantomJS,Firefox"
