@@ -1,5 +1,5 @@
 /*global require, window*/
-var tests = Object.keys(window.__testacular__.files).filter(function (file) {
+var tests = Object.keys(window.__karma__.files).filter(function (file) {
     "use strict";
     return (/Specs\.js$/).test(file);
 });
@@ -37,5 +37,5 @@ require({
         }
     },
     deps: tests,
-    callback: window.__testacular__.start
+    callback: window.__karma__.start
 });
