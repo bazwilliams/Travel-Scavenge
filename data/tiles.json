@@ -2,7 +2,7 @@
     "tiles": [
         {
             "description": "lorry",
-            "tags": ["transportation"]
+            "tags": ["transportation", "eurotunnel"]
         },
         {
             "description": "car",
@@ -18,14 +18,34 @@
         },
         {
             "description": "train",
-            "tags": ["transportation"]
+            "tags": ["transportation", "eurotunnel"]
         },
         {
             "description": "bus",
-            "tags": ["transportation"]
+            "tags": ["transportation", "eurotunnel"]
         },
         {
             "description": "boat",
+            "tags": ["transportation", "eurotunnel"]
+        },
+        {
+            "description": "bicycle",
+            "tags": ["france"]
+        },
+        {
+            "description": "water tower",
+            "tags": ["france"]
+        },
+        {
+            "description": "river",
+            "tags": ["landscape", "france"]
+        }
+        {
+            "description": "castle",
+            "tags": ["spain", "france"]
+        },
+        {
+            "description": "tractor",
             "tags": ["transportation"]
         },
         {
@@ -35,6 +55,14 @@
         {
             "description": "aeroplane",
             "tags": ["transportation"]
+        },
+        {
+            "description": "passport",
+            "tags": ["eurotunnel"]
+        },
+        {
+            "description": "toll booth",
+            "tags": ["eurotunnel", "peage"]
         },
         {
             "description": "wind turbine",
@@ -58,7 +86,7 @@
         },
         {
             "description": "bridge",
-            "tags": ["landscape"]
+            "tags": ["landscape", "france"]
         },
         {
             "description": "airport",
